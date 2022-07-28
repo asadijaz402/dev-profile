@@ -94,7 +94,7 @@ router.post(
             .length > 0
         ) {
           const index = post.likes
-            .map((item) => item.user.toString())
+            ?.map((item) => item?.user.toString())
             .indexOf(req.user.id);
           post.likes.splice(index, 1);
           return post.save().then((post) => res.json(post));

@@ -22,7 +22,7 @@ export const Experience = ({ experience }) => {
           </tr>
         </thead>
 
-        {experience.map((exp, index) => (
+        {experience?.map((exp, index) => (
           <tr key={index}>
             <td>{exp.company}</td>
             <td>{exp.title}</td>

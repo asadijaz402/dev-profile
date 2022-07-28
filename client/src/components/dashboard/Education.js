@@ -22,7 +22,7 @@ export const Education = ({ education }) => {
           </tr>
         </thead>
 
-        {education.map((edu, index) => (
+        {education?.map((edu, index) => (
           <tr key={index}>
             <td>{edu.school}</td>
             <td>{edu.degree}</td>

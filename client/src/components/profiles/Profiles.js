@@ -24,7 +24,7 @@ export const Profiles = () => {
             ) : profiles.length < 1 ? (
               <h4>NO Profiles Found</h4>
             ) : (
-              profiles.map((item, index) => (
+              profiles?.map((item, index) => (
                 <ProfileItem profile={item} key={index} />
               ))
             )}
