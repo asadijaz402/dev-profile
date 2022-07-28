@@ -49,13 +49,13 @@ export const getPosts = () => (dispatch) => {
     dispatch({
       type: GET_POSTS,
       payload: res.data,
-    }).catch((err) => {
+    })}).catch((err) => {
       dispatch({
         type: GET_POSTS,
         payload: null,
       });
     });
-  });
+  
 };
 
 export const postDelete = (id) => (dispatch) => {
