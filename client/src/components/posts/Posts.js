@@ -4,7 +4,7 @@ import { PostForm } from "./PostForm";
 import { Spinner } from "../common/Spinner";
 import { PostFeed } from "./PostFeed";
 export const Posts = () => {
-  const { posts, loading } = useSelector((state) => state.post);
+  const { posts, loading } = useSelector((state) => state?.post);
   return (
     <div className="feed">
       <div className="container">
