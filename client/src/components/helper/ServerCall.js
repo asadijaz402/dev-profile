@@ -3,7 +3,7 @@ import axios from "axios";
 import { authHeader } from "./AuthHeader";
 // import store from "../../redux/storeConfig/store";
 // import { logout } from "../../redux/actions/auth";
-const baseUrl = process.env.REACT_APP_BASE_API_URL;
+const baseUrl = "/api";
 axios.interceptors.response.use(
   (response) => {
     return response;
@@ -60,7 +60,7 @@ function postCall({ url, data, callbackProgressUpload = null, source }) {
     requestOptions.cancelToken = source.token;
   }
   return axios
-    .post(baseUrl + "api" + url, data, requestOptions)
+    .post(baseUrl + url, data, requestOptions)
     .then((response) => {
       return response;
     })
@@ -88,7 +88,7 @@ function postAttachment({ url, data, callbackProgressUpload = null, source }) {
     requestOptions.cancelToken = source.token;
   }
   return axios
-    .post(baseUrl + "api" + url, data, requestOptions)
+    .post(baseUrl + url, data, requestOptions)
     .then((response) => {
       return response;
     })
@@ -103,7 +103,7 @@ function putCall({ url, data }) {
     body: JSON.stringify(data),
   };
   return axios
-    .put(baseUrl + "api" + url, data, requestOptions)
+    .put(baseUrl + url, data, requestOptions)
     .then((response) => {
       return response;
     })
@@ -118,7 +118,7 @@ function deleteCall({ url }) {
   };
   console.log(requestOptions);
   return axios
-    .delete(baseUrl + "api" + url, requestOptions)
+    .delete(baseUrl + url, requestOptions)
     .then((response) => {
       return response;
     })
@@ -134,7 +134,7 @@ function postCallWithoutAuth({ url, data }) {
     body: JSON.stringify(data),
   };
   return axios
-    .post(baseUrl + "api" + url, data, requestOptions)
+    .post(baseUrl + url, data, requestOptions)
     .then((response) => {
       return response;
     })
@@ -149,7 +149,7 @@ function getCallWithId(url, id) {
     headers: authHeader(),
   };
   return axios
-    .get(baseUrl + "api" + url + "/" + id, requestOptions)
+    .get(baseUrl + url + "/" + id, requestOptions)
     .then((response) => {
       return response;
     })
