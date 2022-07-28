@@ -35,7 +35,7 @@ function getCall({ url, customUrl, page, params }) {
     params,
   };
   return axios
-    .get(customUrl || baseUrl + url, requestOptions)
+    .get(customUrl || baseUrl + "api" + url, requestOptions)
     .then((response) => {
       return response;
     })
@@ -60,7 +60,7 @@ function postCall({ url, data, callbackProgressUpload = null, source }) {
     requestOptions.cancelToken = source.token;
   }
   return axios
-    .post(baseUrl + url, data, requestOptions)
+    .post(baseUrl + "api" + url, data, requestOptions)
     .then((response) => {
       return response;
     })
@@ -88,7 +88,7 @@ function postAttachment({ url, data, callbackProgressUpload = null, source }) {
     requestOptions.cancelToken = source.token;
   }
   return axios
-    .post(baseUrl + url, data, requestOptions)
+    .post(baseUrl + "api" + url, data, requestOptions)
     .then((response) => {
       return response;
     })
@@ -103,7 +103,7 @@ function putCall({ url, data }) {
     body: JSON.stringify(data),
   };
   return axios
-    .put(baseUrl + url, data, requestOptions)
+    .put(baseUrl + "api" + url, data, requestOptions)
     .then((response) => {
       return response;
     })
@@ -118,7 +118,7 @@ function deleteCall({ url }) {
   };
   console.log(requestOptions);
   return axios
-    .delete(baseUrl + url, requestOptions)
+    .delete(baseUrl + "api" + url, requestOptions)
     .then((response) => {
       return response;
     })
@@ -134,7 +134,7 @@ function postCallWithoutAuth({ url, data }) {
     body: JSON.stringify(data),
   };
   return axios
-    .post(baseUrl + url, data, requestOptions)
+    .post(baseUrl + "api" + url, data, requestOptions)
     .then((response) => {
       return response;
     })
@@ -149,7 +149,7 @@ function getCallWithId(url, id) {
     headers: authHeader(),
   };
   return axios
-    .get(baseUrl + url + "/" + id, requestOptions)
+    .get(baseUrl + "api" + url + "/" + id, requestOptions)
     .then((response) => {
       return response;
     })
