@@ -22,9 +22,10 @@ export const loginUser = (data) => (dispatch) => {
     .catch((err) => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 
-export const logout = () => (dispatch) => {
+export const logout = (navigate) => (dispatch) => {
   localStorage.removeItem("token");
   dispatch(setUser({}));
+  navigate("/login");
 };
 
 export const setUser = (data) => {
