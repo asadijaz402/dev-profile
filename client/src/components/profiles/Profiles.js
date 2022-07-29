@@ -6,6 +6,8 @@ import { ProfileItem } from "./ProfileItem";
 export const Profiles = () => {
   const dispatch = useDispatch();
   const { profiles, loading } = useSelector((state) => state.profile);
+
+  console.log("profiles:>", profiles);
   useEffect(() => {
     dispatch(getProfiles());
   }, []);

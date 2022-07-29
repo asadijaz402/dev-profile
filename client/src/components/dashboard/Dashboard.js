@@ -47,7 +47,7 @@ export const Dashboard = () => {
                 <p className="lead text-muted">
                   Welcome{" "}
                   <Link to={`/profile/${profile.handle}`}>
-                    {profile.handle}
+                    {profile.handle
                   </Link>{" "}
                 </p>
                 <ProfileAction />
