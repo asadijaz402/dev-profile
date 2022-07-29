@@ -6,8 +6,6 @@ import { ProfileItem } from "./ProfileItem";
 export const Profiles = () => {
   const dispatch = useDispatch();
   const { profiles, loading } = useSelector((state) => state.profile);
-
-  console.log("profiles:>", profiles);
   useEffect(() => {
     dispatch(getProfiles());
   }, []);
@@ -21,9 +19,9 @@ export const Profiles = () => {
             <p className="lead text-center">
               Brows and connect with developers
             </p>
-            {profiles === null || loading ? (
+            {profiles === null  || loading ? (
               <Spinner />
-            ) : profiles.length < 1 ? (
+            ) : profiles?.length < 1 ? (
               <h4>NO Profiles Found</h4>
             ) : (
               profiles?.map((item, index) => (

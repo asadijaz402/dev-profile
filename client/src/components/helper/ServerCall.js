@@ -35,7 +35,7 @@ function getCall({ url, customUrl, page, params }) {
     params,
   };
   return axios
-    .get(customUrl || baseUrl + "api" + url, requestOptions)
+    .get(customUrl || baseUrl  + url, requestOptions)
     .then((response) => {
       return response;
     })
