@@ -1,11 +1,12 @@
-import React from "react";
-import { Link,useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/action/auth";
 import { clearProfile } from "../../redux/action/profile";
 export const Navbar = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [collapse, setCollapse] = useState(true);
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const logoutUser = () => {
     dispatch(clearProfile());
@@ -18,15 +19,19 @@ export const Navbar = () => {
           DEV-PROFILE
         </Link>
         <button
+          onClick={() => setCollapse(!collapse)}
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
+          data-bs-toggle="collapse"
           data-target="#mobile-nav"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="mobile-nav">
+        <div
+          className={`${collapse && "collapse"} navbar-collapse`}
+          id="mobile-nav"
+        >
           <ul className="navbar-nav m-auto">
             <li className="nav-item">
               <Link className="nav-link" to="profiles">
@@ -38,12 +43,12 @@ export const Navbar = () => {
 
           {!isAuthenticated ? (
             <ul className="navbar-nav m-auto">
-              <li className="nav-item">
+              <li className="nav-item" onClick={() => setCollapse(!collapse)}>
                 <Link className="nav-link" to="/register">
                   Sign Up
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item" onClick={() => setCollapse(!collapse)}>
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
@@ -51,22 +56,38 @@ export const Navbar = () => {
             </ul>
           ) : (
             <ul className="navbar-nav m-auto">
-              <li className="nav-item m-2" style={{ color: "white" }}>
+              <li
+                className="nav-item m-2"
+                style={{ color: "white" }}
+                onClick={() => setCollapse(!collapse)}
+              >
                 <Link className="nav-link" to="/feed">
                   Post Feed{" "}
                 </Link>
               </li>
-              <li className="nav-item m-2" style={{ color: "white" }}>
+              <li
+                className="nav-item m-2"
+                style={{ color: "white" }}
+                onClick={() => setCollapse(!collapse)}
+              >
                 <Link className="nav-link" to="/dashboard">
                   Dashboard{" "}
                 </Link>
               </li>
-              <li className="nav-item m-2" style={{ color: "white" }}>
+              <li
+                className="nav-item m-2"
+                style={{ color: "white" }}
+                onClick={() => setCollapse(!collapse)}
+              >
                 <Link className="nav-link" to="/dashboard">
                   {user.name}
                 </Link>
               </li>
-              <li className="nav-item " style={{ color: "white" }}>
+              <li
+                className="nav-item "
+                style={{ color: "white" }}
+                onClick={() => setCollapse(!collapse)}
+              >
                 {" "}
                 <a href={"#"} className="nav-link" onClick={logoutUser}>
                   <img
